@@ -8,6 +8,7 @@ import {
 } from '@expo-google-fonts/archivo';
 import AppLoading from 'expo-app-loading';
 
+import { Routes } from './src/routes';
 import { theme } from './src/global/styles/theme';
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* TODO: add app routes entry point here */}
+      <Routes />
     </ThemeProvider>
   );
 }
