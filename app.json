@@ -1,0 +1,12 @@
+{
+  "name": "BestDeal",
+  "displayName": "BestDeal",
+  "expo": {
+    "name": "BestDeal",
+    "slug": "BestDeal",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
