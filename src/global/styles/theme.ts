@@ -21,6 +21,7 @@ export const theme = {
   },
   fonts: {
     primaryRegular: 'Archivo_400Regular',
+    primaryMedium: 'Archivo_500Medium',
     primarySemiBold: 'Archivo_600SemiBold',
     primaryBold: 'Archivo_700Bold',
     secondaryRegular: 'Inter_400Regular',

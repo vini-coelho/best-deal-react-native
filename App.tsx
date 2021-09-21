@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import {
   Archivo_400Regular,
+  Archivo_500Medium,
   Archivo_600SemiBold,
   Archivo_700Bold,
   useFonts,
@@ -19,6 +20,7 @@ import { theme } from './src/global/styles/theme';
 export default function App() {
   const [fontsLoaded] = useFonts({
     Archivo_400Regular,
+    Archivo_500Medium,
     Archivo_600SemiBold,
     Archivo_700Bold,
     Inter_400Regular,

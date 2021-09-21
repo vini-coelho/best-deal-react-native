@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { TextInputProps } from 'react-native';
 import { useTheme } from 'styled-components';
-import { Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 interface Props extends TextInputProps {
-  iconName:  ConstructorParameters<typeof Feather>[0]['name'];
+  iconName:  ConstructorParameters<typeof MaterialIcons>[0]['name'];
 }
 
 export function Input({
@@ -37,7 +37,7 @@ export function Input({
     <Container style={style}>
       <Content>
       <IconContainer>
-        <Feather
+        <MaterialIcons
           name={iconName}
           size={24}
           color={(isFocused || !!value) ? colors.main : colors.text}
