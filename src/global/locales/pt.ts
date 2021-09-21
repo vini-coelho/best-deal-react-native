@@ -8,6 +8,7 @@ export const pt = {
   GENERAL_AMOUNT: 'Quantidade',
   GENERAL_TOTAL: 'total',
   GENERAL_CLEAR_ALL: 'Limpar tudo',
+  GENERAL_BEST_DEAL: 'Best Deal!',
 
   COMPARE_SCREEN_TITLE: 'Compare &\nEconomize',
 }
