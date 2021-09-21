@@ -16,6 +16,7 @@ interface Props extends RectButtonProps {
 export function Button({
   title,
   buttonStyle = 'white',
+  style,
   ...rest
 }: Props) {
   const { colors } = useTheme();
@@ -31,6 +32,7 @@ export function Button({
       colors={gradients[buttonStyle]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
+      style={style}
     >
       <Container {...rest}>
         <Title buttonStyle={buttonStyle}>{title}</Title>
