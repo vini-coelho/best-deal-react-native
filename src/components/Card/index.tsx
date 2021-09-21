@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { t } from '../../global/locales';
+import { formatCurrency } from '../../utils/formatCurrency';
+
 import {
   Container,
   Content,
@@ -16,8 +19,8 @@ interface Props {
   productSize: string;
   quantity: string;
   title: string;
-  price: string;
-  total: string;
+  price: number;
+  total: number;
 }
 
 export function Card({
@@ -33,11 +36,11 @@ export function Card({
       <Content>
         <Subtitle>{productCategory}</Subtitle>
         <Title>{title} {productSize} x {quantity} un.</Title>
-        <Price>R$ {price} / litro</Price>
+        <Price>{formatCurrency(price)} / litro</Price>
       </Content>
       <Footer>
-        <TotalLabel>total</TotalLabel>
-        <Total>{total}</Total>
+        <TotalLabel>{t('GENERAL_TOTAL')}</TotalLabel>
+        <Total>{formatCurrency(total)}</Total>
       </Footer>
     </Container>
   );

@@ -15,9 +15,9 @@ export function Calculator() {
         productCategory='cerveja'
         productSize='300ml'
         title='Heineken'
-        price='2,49'
+        price={2.49}
         quantity='3'
-        total='24,89'
+        total={24.5}
       />
     </Container>
   );
