@@ -3,6 +3,8 @@ import React from 'react';
 import { t } from '../../global/locales';
 import { formatCurrency } from '../../utils/formatCurrency';
 
+import { ItemDTO } from '../../database/dtos/ItemDTO';
+
 import {
   Container,
   Content,
@@ -15,32 +17,20 @@ import {
 } from './styles';
 
 interface Props {
-  productCategory: string;
-  productSize: string;
-  quantity: string;
-  title: string;
-  price: number;
-  total: number;
+  item: ItemDTO
 }
 
-export function Card({
-  productCategory,
-  productSize,
-  quantity,
-  title,
-  price,
-  total,
-}: Props) {
+export function Card({ item }: Props) {
   return (
     <Container>
       <Content>
-        <Subtitle>{productCategory}</Subtitle>
-        <Title>{title} {productSize} x {quantity} un.</Title>
-        <Price>{formatCurrency(price)} / litro</Price>
+        <Subtitle>{item.category}</Subtitle>
+        <Title>{item.title} {item.measureValue} x {item.quantity} un.</Title>
+        <Price>{formatCurrency(item.price)} / litro</Price>
       </Content>
       <Footer>
         <TotalLabel>{t('GENERAL_TOTAL')}</TotalLabel>
-        <Total>{formatCurrency(total)}</Total>
+        <Total>{formatCurrency(item.price * item.quantity)}</Total>
       </Footer>
     </Container>
   );

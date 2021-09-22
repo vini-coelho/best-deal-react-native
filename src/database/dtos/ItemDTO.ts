@@ -5,4 +5,6 @@ export interface ItemDTO {
   measureValue?: number;
   unit?: 'kg' | 'g' | 'mg' | 'l' | 'ml';
   quantity: number | 1;
+  price: number;
+  relativePrice?: number;
 }
