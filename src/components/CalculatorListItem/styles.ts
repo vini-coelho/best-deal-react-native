@@ -12,8 +12,6 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  margin-bottom: 4px;
 `;
 
 export const ItemInfo = styled.Text`
@@ -34,6 +32,7 @@ export const Content = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 4px;
 `;
 
 export const ItemTitle = styled.Text`

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, StatusBar } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-import { v4 as uuid } from 'uuid';
 
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';

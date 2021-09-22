@@ -19,14 +19,14 @@ interface Props {
 export function CalculatorListItem({ item }: Props) {
   return (
     <Container>
-      <Header>
-        <ItemInfo>{item.measureValue} {item.unit} x {item.quantity} un</ItemInfo>
-        <Total>{formatCurrency(item.quantity * item.price)}</Total>
-      </Header>
       <Content>
         <ItemTitle>{item.title}</ItemTitle>
         <RelativeValue>{formatCurrency(item.relativePrice!)} / l</RelativeValue>
       </Content>
+      <Header>
+        <ItemInfo>{item.measureValue} {item.unit} x {item.quantity} un</ItemInfo>
+        <Total>{formatCurrency(item.price)}</Total>
+      </Header>
     </Container>
   );
 }

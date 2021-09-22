@@ -32,19 +32,12 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
     onAddItem({
       id: uuid(),
       title,
+      unit: 'ml',
       price: parseFloat(price.replace(',', '.')),
       measureValue: parseFloat(volume),
       quantity: parseInt(quantity),
       relativePrice: (parseFloat(price.replace(',', '.')))/((parseFloat(volume) * parseInt(quantity)) / 1000)
     });
-    console.log({
-      id: uuid(),
-      title,
-      price: parseFloat(price.replace(',', '.')),
-      measureValue: parseFloat(volume),
-      quantity: parseInt(quantity),
-      relativePrice: (parseFloat(price.replace(',', '.')))/((parseFloat(volume) * parseInt(quantity)) / 1000)
-    })
   }
 
   return (

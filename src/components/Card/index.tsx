@@ -30,7 +30,7 @@ export function Card({ item }: Props) {
       </Content>
       <Footer>
         <TotalLabel>{t('GENERAL_TOTAL')}</TotalLabel>
-        <Total>{formatCurrency(item.price * item.quantity)}</Total>
+        <Total>{formatCurrency(item.price)}</Total>
       </Footer>
     </Container>
   );
