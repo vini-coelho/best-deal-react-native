@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, StatusBar } from 'react-native';
+import { FlatList, Modal, StatusBar } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
@@ -56,12 +56,12 @@ export function Calculator() {
       <StatusBar
         barStyle="dark-content"
       />
-      <AnimatedModal visible={modalVisible}>
+      <Modal animationType='slide' visible={true} onRequestClose={() => setModalVisible(false)}>
         <CalculatorAddItem
           onCancel={() => setModalVisible(false)}
           onAddItem={handleAddItem}
         />
-      </AnimatedModal>
+      </Modal>
       <Content>
         <Title>{t('GENERAL_BEST_DEAL')}</Title>
         <Card

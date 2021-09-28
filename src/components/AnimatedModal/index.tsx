@@ -74,6 +74,10 @@ export function AnimatedModal({
     } else {
       handleCloseModal();
     }
+
+    return () => {
+      handleCloseModal()
+    }
   }, [visible]);
 
   if(!modalVisible) {
@@ -94,15 +98,15 @@ export function AnimatedModal({
       <KeyboardAvoidingView
         style={{
           flex: 1,
-          justifyContent: 'flex-end'
         }}
-        behavior='padding'
+        behavior='height'
       >
         <Animated.View style={[
           modalContentStyle,
           {
             zIndex: 300,
             width: '100%',
+            height: '100%'
           }
         ]}>
           {children}

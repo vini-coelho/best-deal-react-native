@@ -1,8 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { CalculatorAddItem } from '../screens/CalculatorAddItem';
-import { Calculator } from '../screens/Calculator';
+import { MainTabs } from './Tabs.routes';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,12 +14,8 @@ export function MainStack() {
       }}
     >
       <Stack.Screen
-        name='Calculator'
-        component={Calculator}
-      />
-      <Stack.Screen
-        name='CalculatorAddItem'
-        component={CalculatorAddItem}
+        name='Home'
+        component={MainTabs}
       />
     </Stack.Navigator>
   )

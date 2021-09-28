@@ -44,7 +44,7 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
     <Container>
       <Header>
         <Title>{t('GENERAL_ADD_ITEM')}</Title>
-        <CloseButton onPress={onCancel}>
+        <CloseButton onPress={() => onCancel()}>
           <Feather
             name="x"
             color={colors.title}
