@@ -23,6 +23,6 @@ export const Title = styled.Text<Props>`
     ? theme.colors.title
     : theme.colors.white
   };
-  font-family: ${({ theme }) => theme.fonts.secondaryMedium};
-  font-size: ${RFValue(15)}px;
+  font-family: ${({ theme }) => theme.fonts.primaryMedium};
+  font-size: ${RFValue(14)}px;
 `;
