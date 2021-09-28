@@ -2,16 +2,16 @@ export const theme = {
   colors: {
     header: '#1B1B1F',
 
-    background_primary: '#F4F5F6',
-    background_secondary: '#FFFFFF',
+    background_primary: '#FFFFFF',
+    background_secondary: '#F6F6F4',
 
     text: '#7A7A80',
-    text_detail: '#AEAEB3',
-    title: '#47474D',
+    text_detail: '#989898',
+    title: '#0D0C22',
 
     line: '#EBEBF0',
 
-    main: '#FF4D51',
+    main: '#6729FF',
     main_light: '#FF6F66',
     success: '#03B252',
     white: '#FFFFFF',
