@@ -25,6 +25,10 @@ export const ListHeader = styled.View`
   padding: 10px 24px;
 `;
 
-export const HeaderLeftTitle = styled.Text``;
+export const HeaderLeftTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.text_detail};
+  font-family: ${({ theme }) => theme.fonts.secondaryRegular};
+  font-size: ${RFValue(15)}px;
+`;
 
 export const HeaderRightTitle = styled.Text``;

@@ -10,7 +10,7 @@ i18n.translations = {
 };
 
 i18n.locale = Localization.locale;
-i18n.defaultLocale = 'en';
+i18n.defaultLocale = 'pt';
 i18n.fallbacks = true;
 
 console.log(Localization.locale)

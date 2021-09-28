@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { MainStack } from './main.routes';
+import { MainStack } from './Stack.routes';
 
 export function Routes() {
   return (
