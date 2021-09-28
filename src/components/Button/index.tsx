@@ -14,7 +14,6 @@ interface Props extends RectButtonProps {
 export function Button({
   title,
   buttonStyle = 'default',
-  style,
   ...rest
 }: Props) {
   return (
