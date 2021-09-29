@@ -20,7 +20,7 @@ interface Props {
   isEmpty: boolean;
 }
 
-export function Card({ item, isEmpty }: Props) {
+export function Card({ item }: Props) {
   return (
     <Container>
       {Object.keys(item).length ?
