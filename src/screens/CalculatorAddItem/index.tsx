@@ -84,7 +84,7 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
         style={{ marginBottom: 10 }}
       />
       <Button
-        buttonStyle='red'
+        buttonStyle='default'
         title={t('GENERAL_ADD')}
         onPress={handleAddItem}
       />

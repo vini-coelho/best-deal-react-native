@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, Modal, StatusBar } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { Feather } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
 
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
-import { ButtonMinimal } from '../../components/ButtonMinimal';
 import { CalculatorListItem } from '../../components/CalculatorListItem';
 import { CalculatorAddItem } from '../CalculatorAddItem';
 
@@ -14,18 +16,26 @@ import { t } from '../../global/locales';
 
 import {
   Container,
+  Header,
+  HeaderButtons,
   Content,
   Title,
+  Selector,
+  SelectorText,
   ListHeader,
   HeaderLeftTitle,
-  HeaderRightTitle,
 } from './styles';
-import { AnimatedModal } from '../../components/AnimatedModal';
+import { ButtonIcon } from '../../components/ButtonIcon';
 
 export function Calculator() {
   const [modalVisible, setModalVisible] = useState(false);
   const [items, setItems] = useState<ItemDTO[]>([] as ItemDTO[]);
   const [bestDeal, setBestDeal] = useState<ItemDTO>({} as ItemDTO);
+  const { colors } = useTheme();
+
+  function handleOpenModal() {
+    setModalVisible(true);
+  }
 
   function handleAddItem(item: ItemDTO) {
     setItems(prev => [...prev, item]);
@@ -48,7 +58,7 @@ export function Calculator() {
   }
 
   useEffect(() => {
-    compareItems()
+    compareItems();
   }, [items]);
 
   return (
@@ -56,35 +66,55 @@ export function Calculator() {
       <StatusBar
         barStyle="dark-content"
       />
-      <Modal animationType='slide' visible={true} onRequestClose={() => setModalVisible(false)}>
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent
+        presentationStyle="overFullScreen"
+        onRequestClose={() => setModalVisible(false)}
+      >
         <CalculatorAddItem
           onCancel={() => setModalVisible(false)}
           onAddItem={handleAddItem}
         />
       </Modal>
+
+      <Header>
+        <HeaderButtons>
+          <BorderlessButton onPress={() => setModalVisible(true)}>
+            <Feather
+              name="chevron-left"
+              size={RFValue(32)}
+              color={colors.text_detail}
+            />
+          </BorderlessButton>
+        </HeaderButtons>
+
+        <Title>{t('GENERAL_CALCULATOR')}</Title>
+        <Selector>
+          <SelectorText>{'Bebidas (ml/L)'}</SelectorText>
+          <BorderlessButton onPress={() => alert('A')}>
+            <Feather
+              name="chevron-down"
+              size={RFValue(16)}
+              color={colors.main}
+            />
+          </BorderlessButton>
+        </Selector>
+      </Header>
+
       <Content>
-        <Title>{t('GENERAL_BEST_DEAL')}</Title>
         <Card
           item={bestDeal}
         />
-        {/* <Button
-          title={t('GENERAL_ADD_TO_LIST')}
-          buttonStyle="green"
-          style={{ marginTop: 16 }}
-        />
-        <BorderlessButton>
-          <ButtonMinimal
-            title={t('GENERAL_CLEAR_ALL')}
-          />
-        </BorderlessButton> */}
       </Content>
 
       <ListHeader>
-        <HeaderLeftTitle>Opções comparadas</HeaderLeftTitle>
-        <RectButton onPress={() => setModalVisible(true)}>
-          <HeaderRightTitle>02</HeaderRightTitle>
-        </RectButton>
-
+        <HeaderLeftTitle>{t('GENERAL_COMPARED_OPTIONS')}</HeaderLeftTitle>
+        <ButtonIcon
+          onPress={handleOpenModal}
+          iconName="plus"
+        />
       </ListHeader>
 
       <FlatList

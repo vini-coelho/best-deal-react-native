@@ -1,3 +1,5 @@
+import { dark } from "./dark";
+
 export const theme = {
   colors: {
     header: '#1B1B1F',
@@ -18,14 +20,15 @@ export const theme = {
 
     shape: '#E1E1E8',
     shape_dark: '#29292E',
+    // ...dark.colors
   },
   fonts: {
-    primaryRegular: 'Archivo_400Regular',
-    primaryMedium: 'Archivo_500Medium',
-    primarySemiBold: 'Archivo_600SemiBold',
-    primaryBold: 'Archivo_700Bold',
-    secondaryRegular: 'Inter_400Regular',
-    secondaryMedium: 'Inter_500Medium',
-    secondaryBold: 'Inter_700Bold',
+    primaryRegular: 'Poppins_400Regular',
+    primaryMedium: 'Poppins_500Medium',
+    primarySemiBold: 'Poppins_600SemiBold',
+    primaryBold: 'Poppins_700Bold',
+    secondaryRegular: 'Poppins_400Regular',
+    secondaryMedium: 'Poppins_500Medium',
+    secondaryBold: 'Poppins_700Bold',
   }
 };

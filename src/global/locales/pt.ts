@@ -16,6 +16,7 @@ export const pt = {
   GENERAL_PER: 'Por',
   GENERAL_NO_ITEMS_ADDED: 'Nenhum item adicionado',
   GENERAL_ADD_ITEMS_TO_CALCULATE: 'Adicione itens para calcular o menor preço',
+  GENERAL_COMPARED_OPTIONS: 'Opções comparadas',
 
   COMPARE_SCREEN_TITLE: 'Compare &\nEconomize',
 }
