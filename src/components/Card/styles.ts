@@ -7,16 +7,20 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   padding: 24px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
+  border-radius: 30px;
+`;
+
+export const Row = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Subtitle = styled.Text`
-  font-size: ${RFValue(10)}px;
-  font-family: ${({ theme }) => theme.fonts.primaryMedium};
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primaryRegular};
   color: ${({ theme }) => theme.colors.text_detail};
-  text-transform: uppercase;
-
-  margin-bottom: 4px;
 `;
 
 export const Title = styled.Text`
@@ -28,9 +32,9 @@ export const Title = styled.Text`
 `;
 
 export const Price = styled.Text`
-  font-size: ${RFValue(24)}px;
-  font-family: ${({ theme }) => theme.fonts.primaryMedium};
-  color: ${({ theme }) => theme.colors.success};
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.primarySemiBold};
+  color: ${({ theme }) => theme.colors.main};
 `;
 
 export const Footer = styled.View`
