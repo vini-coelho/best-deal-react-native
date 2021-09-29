@@ -17,7 +17,6 @@ import {
 
 interface Props {
   item: ItemDTO;
-  isEmpty: boolean;
 }
 
 export function Card({ item }: Props) {
