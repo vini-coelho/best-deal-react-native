@@ -4,16 +4,22 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   width: 100%;
-  height: ${RFValue(56)}px;
 `;
 
 export const Content = styled.View`
   width: 100%;
-  height: 100%;
+  height: ${RFValue(56)}px;
 
   flex-direction: row;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
+`;
+
+export const Label = styled.Text`
+  color: ${({ theme }) => theme.colors.title};
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primaryMedium};
+  margin-bottom: 3px;
 `;
 
 export const Highlight = styled.View`
@@ -32,17 +38,18 @@ export const StyledInput = styled(TextInput)`
 
   color: ${({ theme }) => theme.colors.title};
   font-size: ${RFValue(15)}px;
-  font-family: ${({ theme }) => theme.fonts.secondaryRegular};
+  font-family: ${({ theme }) => theme.fonts.primaryMedium};
 `;
 
 export const IconContainer = styled.View`
   height: ${RFValue(56)}px;
-  width: ${RFValue(56)}px;
+
+  padding-left: 24px;
 
   align-items: center;
   justify-content: center;
 
-  border-right-width: 2px;
+  /* border-right-width: 2px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.colors.background_primary};
+  border-color: ${({ theme }) => theme.colors.background_primary}; */
 `;
