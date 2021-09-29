@@ -11,6 +11,7 @@ import AppLoading from 'expo-app-loading';
 
 import { Routes } from './src/routes';
 import { theme } from './src/global/styles/theme';
+import { CalculatorProvider } from './src/hooks/useCalculator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,8 +26,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
+    <CalculatorProvider>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </CalculatorProvider>
   );
 }

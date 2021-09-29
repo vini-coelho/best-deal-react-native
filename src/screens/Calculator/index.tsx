@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, KeyboardAvoidingView, Modal, StatusBar, View } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, KeyboardAvoidingView, Modal, StatusBar } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
@@ -9,9 +9,10 @@ import { useTheme } from 'styled-components';
 import { Card } from '../../components/Card';
 import { CalculatorListItem } from '../../components/CalculatorListItem';
 import { ButtonIcon } from '../../components/ButtonIcon';
+import { Selector } from '../../components/Selector';
 import { CalculatorAddItem } from '../CalculatorAddItem';
 
-import { ItemDTO } from '../../database/dtos/ItemDTO';
+import { useCalculator } from '../../hooks/useCalculator';
 import { t } from '../../global/locales';
 
 import {
@@ -23,41 +24,15 @@ import {
   ListHeader,
   HeaderLeftTitle,
 } from './styles';
-import { Selector } from '../../components/Selector';
 
 export function Calculator() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [items, setItems] = useState<ItemDTO[]>([] as ItemDTO[]);
-  const [bestDeal, setBestDeal] = useState<ItemDTO>({} as ItemDTO);
+  const { bestDeal, items } = useCalculator();
   const { colors } = useTheme();
 
   function handleOpenModal() {
     setModalVisible(true);
   }
-
-  function handleAddItem(item: ItemDTO) {
-    setItems(prev => [...prev, item]);
-    setModalVisible(false);
-  }
-
-  function compareItems() {
-    if(items.length === 1) {
-      return setBestDeal(items[0]);
-    }
-
-    if(items.length === 0) return;
-
-    const bestDealItem = items.reduce((prev, current) => {
-      const minValue = Math.min(prev.relativePrice, current.relativePrice);
-      return prev.relativePrice === minValue ? prev : current;
-    });
-
-    setBestDeal(bestDealItem);
-  }
-
-  useEffect(() => {
-    compareItems();
-  }, [items]);
 
   return (
     <Container>
@@ -74,15 +49,12 @@ export function Calculator() {
           behavior="padding"
           style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' }}
         >
-          <CalculatorAddItem
-            onCancel={() => setModalVisible(false)}
-            onAddItem={handleAddItem}
-          />
+          <CalculatorAddItem onClose={() => setModalVisible(false)} />
         </KeyboardAvoidingView>
       </Modal>
 
       <Header>
-        {/* <HeaderButtons>
+        <HeaderButtons>
           <BorderlessButton onPress={() => setModalVisible(true)}>
             <Feather
               name="chevron-left"
@@ -90,10 +62,9 @@ export function Calculator() {
               color={colors.text_detail}
             />
           </BorderlessButton>
-        </HeaderButtons> */}
+        </HeaderButtons>
 
         <Title>{t('GENERAL_CALCULATOR')}</Title>
-        { /* TODO: move this string to locales */}
         <Selector label="Bebidas (ml/l)" />
       </Header>
 

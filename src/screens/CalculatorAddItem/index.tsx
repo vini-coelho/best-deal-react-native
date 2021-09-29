@@ -3,8 +3,8 @@ import { v4 as uuid } from 'uuid';
 import { Picker } from '@react-native-picker/picker';
 import { FlatList } from 'react-native';
 
-import { ItemDTO } from '../../database/dtos/ItemDTO';
 import { t } from '../../global/locales';
+import { useCalculator } from '../../hooks/useCalculator';
 
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Selector } from '../../components/Selector';
@@ -20,16 +20,17 @@ import {
 } from './styles';
 
 interface Props {
-  onCancel: () => void;
-  onAddItem: (item: ItemDTO) => void;
+  onClose: () => void;
 }
 
-export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
+export function CalculatorAddItem({ onClose }: Props) {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [unit, setUnit] = useState('ml');
   const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState('1');
+  const [quantity] = useState('1');
+
+  const { addItem } = useCalculator();
 
   const suggestions = [
     { value: 250, unit: 'ml' },
@@ -39,7 +40,7 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
   ];
 
   function handleAddItem() {
-    onAddItem({
+    addItem({
       id: uuid(),
       title,
       unit: 'ml',
@@ -48,6 +49,8 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
       quantity: parseInt(quantity),
       relativePrice: (parseFloat(price.replace(',', '.')))/((parseFloat(size) * parseInt(quantity)) / 1000)
     });
+
+    onClose();
   }
 
   return (
@@ -55,7 +58,7 @@ export function CalculatorAddItem({ onCancel, onAddItem }: Props) {
       <Header>
         <Title>{t('GENERAL_ADD_ITEM')}</Title>
         <ButtonIcon
-          onPress={() => onCancel()}
+          onPress={() => onClose()}
           iconName="x"
         />
       </Header>
