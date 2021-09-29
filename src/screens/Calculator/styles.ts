@@ -27,16 +27,6 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.title};
 `;
 
-export const Selector = styled(BorderlessButton)`
-  flex-direction: row;
-`;
-
-export const SelectorText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.primaryRegular};
-  color: ${({ theme }) => theme.colors.text_detail};
-  font-size: ${RFValue(12)}px;
-`;
-
 export const Content = styled.View`
   padding: 0 24px;
 `;

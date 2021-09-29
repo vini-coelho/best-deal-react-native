@@ -1,20 +1,19 @@
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize';
-import { RectButton } from 'react-native-gesture-handler';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background_primary};
   padding: 24px;
+  padding-bottom: ${getBottomSpace() + 24}px;
+  border-top-left-radius: ${RFValue(30)}px;
+  border-top-right-radius: ${RFValue(30)}px;
 `;
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primarySemiBold};
-  font-size: ${RFValue(24)}px;
-`;
-
-export const Content = styled.View`
-  background-color: red;
-  flex: 1;
+  font-size: ${RFValue(28)}px;
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const Header = styled.View`
@@ -25,11 +24,9 @@ export const Header = styled.View`
   margin-bottom: 15px;
 `;
 
-export const CloseButton = styled(RectButton)`
-  width: ${RFValue(30)}px;
-  height: ${RFValue(30)}px;
-  border-radius: ${RFValue(30)}px;
-
+export const Row = styled.View`
+  width: 100%;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;

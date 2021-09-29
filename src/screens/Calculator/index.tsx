@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Modal, StatusBar } from 'react-native';
-import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import { FlatList, KeyboardAvoidingView, Modal, StatusBar, View } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 
 import { Card } from '../../components/Card';
-import { Button } from '../../components/Button';
 import { CalculatorListItem } from '../../components/CalculatorListItem';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { CalculatorAddItem } from '../CalculatorAddItem';
 
 import { ItemDTO } from '../../database/dtos/ItemDTO';
@@ -20,12 +20,10 @@ import {
   HeaderButtons,
   Content,
   Title,
-  Selector,
-  SelectorText,
   ListHeader,
   HeaderLeftTitle,
 } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
+import { Selector } from '../../components/Selector';
 
 export function Calculator() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,8 +48,8 @@ export function Calculator() {
     if(items.length === 0) return;
 
     const bestDealItem = items.reduce((prev, current) => {
-        const minValue = Math.min(prev.relativePrice!, current.relativePrice!);
-        return prev.relativePrice === minValue ? prev : current;
+      const minValue = Math.min(prev.relativePrice, current.relativePrice);
+      return prev.relativePrice === minValue ? prev : current;
     });
 
     setBestDeal(bestDealItem);
@@ -70,17 +68,21 @@ export function Calculator() {
         visible={modalVisible}
         animationType="slide"
         transparent
-        presentationStyle="overFullScreen"
         onRequestClose={() => setModalVisible(false)}
       >
-        <CalculatorAddItem
-          onCancel={() => setModalVisible(false)}
-          onAddItem={handleAddItem}
-        />
+        <KeyboardAvoidingView
+          behavior="padding"
+          style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' }}
+        >
+          <CalculatorAddItem
+            onCancel={() => setModalVisible(false)}
+            onAddItem={handleAddItem}
+          />
+        </KeyboardAvoidingView>
       </Modal>
 
       <Header>
-        <HeaderButtons>
+        {/* <HeaderButtons>
           <BorderlessButton onPress={() => setModalVisible(true)}>
             <Feather
               name="chevron-left"
@@ -88,19 +90,11 @@ export function Calculator() {
               color={colors.text_detail}
             />
           </BorderlessButton>
-        </HeaderButtons>
+        </HeaderButtons> */}
 
         <Title>{t('GENERAL_CALCULATOR')}</Title>
-        <Selector>
-          <SelectorText>{'Bebidas (ml/L)'}</SelectorText>
-          <BorderlessButton onPress={() => alert('A')}>
-            <Feather
-              name="chevron-down"
-              size={RFValue(16)}
-              color={colors.main}
-            />
-          </BorderlessButton>
-        </Selector>
+        { /* TODO: move this string to locales */}
+        <Selector label="Bebidas (ml/l)" />
       </Header>
 
       <Content>
