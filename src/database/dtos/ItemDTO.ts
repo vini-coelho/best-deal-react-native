@@ -6,5 +6,5 @@ export interface ItemDTO {
   unit?: 'kg' | 'g' | 'mg' | 'l' | 'ml';
   quantity: number | 1;
   price: number;
-  relativePrice?: number;
+  relativePrice: number;
 }

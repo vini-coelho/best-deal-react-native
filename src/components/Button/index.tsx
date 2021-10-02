@@ -1,6 +1,4 @@
-import React, { useMemo } from 'react';
-import { useTheme } from 'styled-components';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
@@ -10,33 +8,17 @@ import {
 
 interface Props extends RectButtonProps {
   title: string;
-  buttonStyle: 'red' | 'green' | 'white';
+  buttonStyle: 'default' | 'white';
 }
 
 export function Button({
   title,
-  buttonStyle = 'white',
-  style,
+  buttonStyle = 'default',
   ...rest
 }: Props) {
-  const { colors } = useTheme();
-
-  const gradients = useMemo(() => ({
-    red: [colors.main, colors.main_light],
-    green: [colors.success, colors.success],
-    white: [colors.white, colors.white],
-  }), [])
-
   return (
-    <LinearGradient
-      colors={gradients[buttonStyle]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={style}
-    >
-      <Container {...rest}>
-        <Title buttonStyle={buttonStyle}>{title}</Title>
-      </Container>
-    </LinearGradient>
+    <Container buttonStyle={buttonStyle} {...rest}>
+      <Title buttonStyle={buttonStyle}>{title}</Title>
+    </Container>
   )
 }

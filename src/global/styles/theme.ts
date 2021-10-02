@@ -1,31 +1,34 @@
+import { dark } from "./dark";
+
 export const theme = {
   colors: {
     header: '#1B1B1F',
 
-    background_primary: '#F4F5F6',
-    background_secondary: '#FFFFFF',
+    background_primary: '#FFFFFF',
+    background_secondary: '#F6F6F4',
 
     text: '#7A7A80',
-    text_detail: '#AEAEB3',
-    title: '#47474D',
+    text_detail: '#989898',
+    title: '#0D0C22',
 
     line: '#EBEBF0',
 
-    main: '#FF4D51',
+    main: '#6729FF',
     main_light: '#FF6F66',
     success: '#03B252',
     white: '#FFFFFF',
 
     shape: '#E1E1E8',
     shape_dark: '#29292E',
+    // ...dark.colors
   },
   fonts: {
-    primaryRegular: 'Archivo_400Regular',
-    primaryMedium: 'Archivo_500Medium',
-    primarySemiBold: 'Archivo_600SemiBold',
-    primaryBold: 'Archivo_700Bold',
-    secondaryRegular: 'Inter_400Regular',
-    secondaryMedium: 'Inter_500Medium',
-    secondaryBold: 'Inter_700Bold',
+    primaryRegular: 'Poppins_400Regular',
+    primaryMedium: 'Poppins_500Medium',
+    primarySemiBold: 'Poppins_600SemiBold',
+    primaryBold: 'Poppins_700Bold',
+    secondaryRegular: 'Poppins_400Regular',
+    secondaryMedium: 'Poppins_500Medium',
+    secondaryBold: 'Poppins_700Bold',
   }
 };

@@ -1,29 +1,31 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { TextInputProps } from 'react-native';
 import { useTheme } from 'styled-components';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 import {
   Container,
   Content,
+  Label,
   Highlight,
   StyledInput,
   IconContainer,
 } from './styles';
 
 interface Props extends TextInputProps {
-  iconName:  ConstructorParameters<typeof MaterialIcons>[0]['name'];
+  iconName?:  ConstructorParameters<typeof Feather>[0]['name'];
+  label: string;
 }
 
 export function Input({
   iconName,
   style,
   value,
+  label,
   ...rest
 }: Props) {
-  const { colors } = useTheme();
-  const inputRef = useRef();
   const [isFocused, setIsFocused] = useState(false);
+  const { colors } = useTheme();
 
   function handleFocus() {
     setIsFocused(true);
@@ -35,19 +37,22 @@ export function Input({
 
   return (
     <Container style={style}>
+      <Label>{label}</Label>
       <Content>
-      <IconContainer>
-        <MaterialIcons
-          name={iconName}
-          size={24}
-          color={(isFocused || !!value) ? colors.main : colors.text}
-        />
-      </IconContainer>
+        {
+          !!iconName &&
+          <IconContainer>
+            <Feather
+              name={iconName}
+              size={24}
+              color={(isFocused || !!value) ? colors.main : colors.text_detail}
+            />
+          </IconContainer>
+        }
 
       <StyledInput
         autoCorrect={false}
         autoCapitalize="none"
-        ref={inputRef.current}
         onFocus={handleFocus}
         onBlur={handleBlur}
         value={value}
@@ -55,6 +60,7 @@ export function Input({
         {...rest}
       />
       </Content>
+
       { (isFocused || !!value) && <Highlight /> }
     </Container>
   );

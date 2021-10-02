@@ -1,31 +1,24 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import {
-  Archivo_400Regular,
-  Archivo_500Medium,
-  Archivo_600SemiBold,
-  Archivo_700Bold,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
   useFonts,
-} from '@expo-google-fonts/archivo';
-import {
-  Inter_400Regular,
-  Inter_500Medium,
-  Inter_700Bold,
-} from '@expo-google-fonts/inter'
+} from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 
 import { Routes } from './src/routes';
 import { theme } from './src/global/styles/theme';
+import { CalculatorProvider } from './src/hooks/useCalculator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Archivo_400Regular,
-    Archivo_500Medium,
-    Archivo_600SemiBold,
-    Archivo_700Bold,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_700Bold,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
   });
 
   if(!fontsLoaded) {
@@ -33,8 +26,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
+    <CalculatorProvider>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </CalculatorProvider>
   );
 }
